@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbagdon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/15 12:14:42 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/02/19 17:40:45 by cbagdon          ###   ########.fr       */
+/*   Created: 2019/02/12 16:15:35 by cbagdon           #+#    #+#             */
+/*   Updated: 2019/02/12 16:56:20 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 2
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	*source;
+	unsigned char	*dest;
 
-# define CHECK(x) if (x) return (-1)
-# define BREAK(x) if (x) break
-
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-
-int		get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	source = (unsigned char *)src;
+	dest = (unsigned char *)dst;
+	while (i < n)
+	{
+		dest[i] = source[i];
+		if (source[i] == (unsigned char)c)
+			return (dst + i + 1);
+		i++;
+	}
+	return (NULL);
+}

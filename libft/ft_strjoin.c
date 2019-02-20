@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbagdon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/15 12:14:42 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/02/19 17:40:45 by cbagdon          ###   ########.fr       */
+/*   Created: 2019/02/12 21:26:22 by cbagdon           #+#    #+#             */
+/*   Updated: 2019/02/15 13:43:14 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 2
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	unsigned int	len;
+	char			*string;
 
-# define CHECK(x) if (x) return (-1)
-# define BREAK(x) if (x) break
-
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-
-int		get_next_line(const int fd, char **line);
-
-#endif
+	if (!s1 || !s2)
+		return (NULL);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	if (!(string = (char *)malloc(sizeof(char) * len + 1)))
+		return (NULL);
+	ft_strcpy(string, s1);
+	ft_strcat(string, s2);
+	return (string);
+}

@@ -6,7 +6,7 @@
 #    By: cbagdon <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/11 16:50:18 by cbagdon           #+#    #+#              #
-#    Updated: 2019/02/14 11:49:42 by cbagdon          ###   ########.fr        #
+#    Updated: 2019/02/19 17:26:37 by cbagdon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ INLCUDES = includes/
 all:	$(NAME)
 
 $(NAME):
-	gcc -Wall -Wextra -Werror -I includes/libft.h -c $(addprefix srcs/,$(SRCS))
+	gcc -Wall -Wextra -Werror -I includes/libft.h -c $(SRCS)
 	ar -rcs $(NAME) $(OBJECTS)
 
 clean:

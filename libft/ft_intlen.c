@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbagdon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/15 12:14:42 by cbagdon           #+#    #+#             */
-/*   Updated: 2019/02/19 17:40:45 by cbagdon          ###   ########.fr       */
+/*   Created: 2019/02/13 13:40:47 by cbagdon           #+#    #+#             */
+/*   Updated: 2019/02/14 09:31:05 by cbagdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 2
+/*
+**	Fucntion to count the amount of digits in an int
+*/
 
-# define CHECK(x) if (x) return (-1)
-# define BREAK(x) if (x) break
+int		ft_intlen(int num)
+{
+	unsigned int	i;
+	unsigned int	count;
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include "libft/libft.h"
-
-int		get_next_line(const int fd, char **line);
-
-#endif
+	count = 0;
+	if (num < 0)
+		i = -num;
+	else
+		i = num;
+	if (i == 0)
+		return (1);
+	while (i != 0)
+	{
+		i /= 10;
+		count++;
+	}
+	return (count);
+}
